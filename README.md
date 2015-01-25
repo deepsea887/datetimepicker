@@ -56,7 +56,26 @@ $('.datetimepicker').datetimepicker()
 
 ## 依赖和编译
 
-克隆项目后，安装好
+依赖Amaze UI `input-group``form`，克隆项目后在 nodejs 环境下，首先全局安装 Gulp：
+
+```bash
+npm install -g gulp
+```
+
+然后进入目录安装依赖：
+
+```bash
+npm install
+```
+
+接下来，执行 gulp：
+
+```bash
+gulp serve
+```
+
+dist 目录存放编译好的`CSS`文件。
+
 
 ```bash
 $ lessc less/amazeui.datetimepicker.less datetimepicker.css
@@ -64,9 +83,7 @@ $ lessc less/amazeui.datetimepicker.less datetimepicker.css
 
 ## 参数
 
-All options that take a "Date" can handle a `Date` object; a String formatted according to the given `format`; or a timedelta relative to today, eg '-1d', '+6m +1y', etc, where valid units are 'd' (day), 'w' (week), 'm' (month), and 'y' (year).
-
-需要按照 ISO-8601 日期和时间的表示方法，设置你的时间格式 `format` :
+所有的配置参数都是对 `Date` 对象的处理，按照 ISO-8601 日期和时间的表示方法，设置你的时间格式 `format` :
 
 * yyyy-mm-dd
 * yyyy-mm-dd hh:ii
@@ -76,28 +93,30 @@ All options that take a "Date" can handle a `Date` object; a String formatted ac
 
 ### format
 
-String.  Default: 'mm/dd/yyyy'
+日期格式：接受`String`,默认为`mm/dd/yyyy`
 
-The date format, combination of p, P, h, hh, i, ii, s, ss, d, dd, m, mm, M, MM, yy, yyyy.
+日期格式组合: p, P, h, hh, i, ii, s, ss, d, dd, m, mm, M, MM, yy, yyyy.
 
-* p : meridian in lower case ('am' or 'pm') - according to locale file
-* P : meridian in upper case ('AM' or 'PM') - according to locale file
-* s : seconds without leading zeros
-* ss : seconds, 2 digits with leading zeros
-* i : minutes without leading zeros
-* ii : minutes, 2 digits with leading zeros
-* h : hour without leading zeros - 24-hour format
-* hh : hour, 2 digits with leading zeros - 24-hour format
-* H : hour without leading zeros - 12-hour format
-* HH : hour, 2 digits with leading zeros - 12-hour format
-* d : day of the month without leading zeros
-* dd : day of the month, 2 digits with leading zeros
-* m : numeric representation of month without leading zeros
-* mm : numeric representation of the month, 2 digits with leading zeros
-* M : short textual representation of a month, three letters
-* MM : full textual representation of a month, such as January or March
-* yy : two digit representation of a year
-* yyyy : full numeric representation of a year, 4 digits
+ss(秒), ii(分), hh(小时), HH(小时), dd(天), mm(月),代表不足两位数，以0作为占位符（01-02）
+
+* p : 小写时间分界点('am' or 'pm')
+* P : 大写时间分界点('AM' or 'PM')
+* s : 秒
+* ss : 秒
+* i : 分
+* ii : 分
+* h : 小时, 24小时格式
+* hh : 小时, 24小时格式
+* H : 小时, 12小时格式
+* HH : 小时, 12小时格式
+* d : 天
+* dd : 天
+* m : 月
+* mm : 月
+* M : 月份短文本表述
+* MM : 月份短文本表述
+* yy : 年, 2位数字表示
+* yyyy : 年, 4位数字表示
 
 ### weekStart
 
@@ -166,15 +185,11 @@ The date format, combination of p, P, h, hh, i, ii, s, ss, d, dd, m, mm, M, MM, 
 
 ### language
 
-String.  Default: 'en'
-
-The two-letter code of the language to use for month and day names.  These will also be used as the input's value (and subsequently sent to the server in the case of form submissions).  Currently ships with English ('en'), German ('de'), Brazilian ('br'), and Spanish ('es') translations, but others can be added (see I18N below).  If an unknown language code is given, English will be used.
+语言设置，默认使用英语 `'en'` ,要支持更多语言可以通过参考下面的 I18N 扩展。
 
 ### forceParse
 
-Boolean.  Default: true
-
-Whether or not to force parsing of the input value when the picker is closed.  That is, when an invalid date is left in the input field by the user, the picker will forcibly parse that value, and set the input's value to the new, valid date, conforming to the given `format`.
+是否强制解析 `<input>` 元素内的时间格式, 默认为: `true`
 
 ### minuteStep
 
@@ -394,7 +409,7 @@ $('#date-end')
 
 ### outOfRange
 
-Fired when you pick a date before the *startDate* or after the *endDate* or when you specify a date via the method *setDate* or *setUTCDate*..
+当选择了 `startDate` 前的时间和 `endDate` 后面的时间将触发该事件，`setDate`  `setUTCDate` 也会触发。
 
 ## 键盘控制导航
 
@@ -428,39 +443,40 @@ Fired when you pick a date before the *startDate* or after the *endDate* or when
 
 #### wheelViewModeNavigationInverseDirection
 
-Boolean.  Default: false
-
-Whether or not to reverse the direction of scrolling. Default is scroll up to the decade view.
+是否反向滚动, 默认的是向上滚动来查看，默认为：`false`
 
 #### wheelViewModeNavigationDelay
 
 设置面板滚动时间间距，`wheelViewModeNavigationDelay` 默认值为 `100`。
 
-#### About viewSelect option
-
-The recommended value for viewSelect option is 4 when this feature is enable. That means you can easily update any the value in every view. This option value is applied in the demo page.
-
-### Feature Demo
+### Demo
 
 支持鼠标滚轮控制器的[Demo](http://lyonlai.github.io/bootstrap-datetimepicker/demo.html) 
 
-## I18N
+## I18N 国际化
 
-The plugin supports i18n for the month and weekday names and the `weekStart` option.  The default is English ('en'); other available translations are avilable in the `js/locales/` directory, simply include your desired locale after the plugin.  To add more languages, simply add a key to `$.fn.datetimepicker.dates`, before calling `.datetimepicker()`.  Example:
+扩展语言支持, [其他语言扩展示例Demo](https://github.com/smalot/bootstrap-datetimepicker/tree/master/js/locales) 
 
 ```javascript
-$.fn.datetimepicker.dates['en'] = {
-  days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-  daysShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-  daysMin: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
-  months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-  monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-  today: "Today"
+$.fn.datetimepicker.dates['zh-CN'] = {
+  days: ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"],
+  daysShort: ["周日", "周一", "周二", "周三", "周四", "周五", "周六", "周日"],
+  daysMin:  ["日", "一", "二", "三", "四", "五", "六", "日"],
+  months: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+  monthsShort: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+  today: "今天",
+  suffix: [],
+  meridiem: ["上午", "下午"]
 };
+
+// 调用
+
+$('.xxx').datetimepicker({
+  language:  'zh-CN'
+});
 ```
 
-You can override the default date format in the language configuration with `format` attribute.
-Example:
+你可以在格式属性的语言配置重写默认的日期格式。
 
 ```javascript
 $.fn.datetimepicker.dates['pt-BR'] = {
@@ -468,10 +484,10 @@ $.fn.datetimepicker.dates['pt-BR'] = {
 };
 ```
 
-Right-to-left languages may also include `rtl: true` to make the calendar display appropriately.
+从右向左书写的语言你可以使用 `rtl: true` 来设置。
 
-If your browser (or those of your users) is displaying characters wrong, chances are the browser is loading the javascript file with a non-unicode encoding.  Simply add `charset="UTF-8"` to your `script` tag:
+调用你扩展的语言插件，注意字符编码格式:
 
 ```html
-<script type="text/javascript" src="bootstrap-datetimepicker.de.js" charset="UTF-8"></script>
+<script type="text/javascript" src="datetimepicker.de.js" charset="UTF-8"></script>
 ```
