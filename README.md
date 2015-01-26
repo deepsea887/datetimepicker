@@ -196,11 +196,9 @@ ss(秒), ii(分), hh(小时), HH(小时), dd(天), mm(月),代表不足两位数
 设置分钟视图时间间隔数，默认为 `5`。
 
 
-### pickerReferer : deprecated
+### pickerReferer : （弃用）
 
-String.  Default: 'default'
-
-The referer element to place the picker for the component implementation. If you want to place the picker just under the input field, just specify <code>input</code>.
+指定输入的 `<input>` 元素，默认为 `default`。
 
 ### pickerPosition 
 
@@ -466,7 +464,8 @@ $.fn.datetimepicker.dates['zh-CN'] = {
   monthsShort: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
   today: "今天",
   suffix: [],
-  meridiem: ["上午", "下午"]
+  meridiem: ["上午", "下午"],
+  rtl: true // 从右向左书写的语言你可以使用 rtl: true 来设置
 };
 
 // 调用
@@ -484,10 +483,8 @@ $.fn.datetimepicker.dates['pt-BR'] = {
 };
 ```
 
-从右向左书写的语言你可以使用 `rtl: true` 来设置。
-
 调用你扩展的语言插件，注意字符编码格式:
 
 ```html
-<script type="text/javascript" src="datetimepicker.de.js" charset="UTF-8"></script>
+<script type="text/javascript" src="datetimepicker.zh.js" charset="UTF-8"></script>
 ```
