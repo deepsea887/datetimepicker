@@ -3,7 +3,7 @@
 
 该项目来自 [bootstrap-datetimepicker](https://github.com/smalot/bootstrap-datetimepicker)，只修改了 `CSS` 文件，使用需要结合原有的 `class` 和 Amaze UI 混合使用。
 
-## 案例
+## 案例 [demo](http://amazeui.github.io/datetimepicker/docs/demo.html)
 
 时间选择器插件参数 `format` ：设置时间格式
 
