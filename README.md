@@ -3,9 +3,11 @@
 
 该项目来自 [bootstrap-datetimepicker](https://github.com/smalot/bootstrap-datetimepicker)，只修改了 `CSS` 文件，使用需要结合原有的 `class` 和 Amaze UI 混合使用。
 
-## 案例 [demo](http://amazeui.github.io/datetimepicker/docs/demo.html)
+## [使用演示](http://amazeui.github.io/datetimepicker/docs/demo.html)
 
-时间选择器插件参数 `format` ：设置时间格式
+## 调用方法
+
+**设置时间格式：`format` 选项**
 
 ```html
 <input type="text" value="2015-02-15 21:05" id="datetimepicker" class="am-form-field">
@@ -25,9 +27,9 @@ $('#datetimepicker').datetimepicker({
 $('#datetimepicker').datetimepicker();
 ```
 
-结合 Amaze Ui 组件
+**结合 Amaze UI 组件**
 
-结合 Amaze UI Class `.am-input-group` 来实现组件样式，其中 Class `.date`、`.add-on`、`.icon-th` 都在原 JS 中有引用，使用时务必写上。
+结合 Amaze UI Class `.am-input-group` 来实现组件样式，其中 Class `.date`、`.add-on`、`.icon-th` 都在原 JS 中有引用，使用时务必加上。
 
 ```html
 <div class="am-input-group date" id="datetimepicker" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
@@ -39,7 +41,7 @@ $('#datetimepicker').datetimepicker();
 $('#datetimepicker').datetimepicker();
 ```
 
-内联调用形式：
+**内联调用：**
 
 ```html
 <div id="datetimepicker"></div>
@@ -48,15 +50,9 @@ $('#datetimepicker').datetimepicker();
 $('#datetimepicker').datetimepicker();
 ```
 
-## 使用
-
-```javascript
-$('.datetimepicker').datetimepicker()
-```
-
 ## 依赖和编译
 
-依赖Amaze UI `input-group``form`，克隆项目后在 nodejs 环境下，首先全局安装 Gulp：
+依赖 Amaze UI `input-group``form`，克隆项目后在 Node.js 环境下，首先全局安装 Gulp：
 
 ```bash
 npm install -g gulp
@@ -74,14 +70,7 @@ npm install
 gulp serve
 ```
 
-dist 目录存放编译好的`CSS`文件。
-
-
-```bash
-$ lessc less/amazeui.datetimepicker.less datetimepicker.css
-```
-
-## 参数
+## 插件配置
 
 所有的配置参数都是对 `Date` 对象的处理，按照 ISO-8601 日期和时间的表示方法，设置你的时间格式 `format` :
 
@@ -120,7 +109,7 @@ ss(秒), ii(分), hh(小时), HH(小时), dd(天), mm(月),代表不足两位数
 
 ### weekStart
 
-设置开始星期几的选择：接受整数 `0 - 6`，默认为 `0`，0 (Sunday) 到 6 (Saturday)。  
+设置开始星期几的选择：接受整数 `0 - 6`，默认为 `0`，0 (Sunday) 到 6 (Saturday)。
 
 ### startDate
 
@@ -134,7 +123,7 @@ ss(秒), ii(分), hh(小时), HH(小时), dd(天), mm(月),代表不足两位数
 
 禁用星期的列数：接受 `String` 或 `Array` 类型参数
 
-- 默认值为 `'', []` 
+- 默认值为 `'', []`
 - 示例：设置周六和周日禁用: `daysOfWeekDisabled: '0,6'` 或者 `daysOfWeekDisabled: [0,6]`。
 
 ### autoclose
@@ -200,7 +189,7 @@ ss(秒), ii(分), hh(小时), HH(小时), dd(天), mm(月),代表不足两位数
 
 指定输入的 `<input>` 元素，默认为 `default`。
 
-### pickerPosition 
+### pickerPosition
 
 设置选择器的定位方式，接受 `String` 类型：
 
@@ -242,7 +231,7 @@ $('#date-end')
   });
 ```
 
-组件结合
+**组件结合**
 
 ```html
 <div class="am-input-group date form_datetime-1">
@@ -251,11 +240,11 @@ $('#date-end')
 </div>
 ```
 
-带有删除的组件结合
+**带有删除的组件结合**
 
 ```html
 <div class="am-input-group date form_datetime-3" data-date="2015-02-14 14:45">
-  <input size="16" type="text" value="" class="am-form-field" readonly>    
+  <input size="16" type="text" value="" class="am-form-field" readonly>
   <span class="add-on am-input-group-label"><i class="icon-remove am-icon-close"></i></span>
   <span class="add-on am-input-group-label"><i class="icon-th am-icon-calendar"></i></span>
 </div>
@@ -263,37 +252,37 @@ $('#date-end')
 
 ## 方法
 
-### .datetimepicker(options)
+### `.datetimepicker(options)`
 
-初始化一个时间选择器
+初始化日期时间选择器。
 
-### remove
+### `remove`
 
-删除
+移除日期时间选择面板。
 
 ```javascript
 $('#datetimepicker').datetimepicker('remove');
 ```
 
-### show
+### `show`
 
-显示
+显示日期时间选择面板。
 
 ```javascript
 $('#datetimepicker').datetimepicker('show');
 ```
 
-### hide
+### `hide`
 
-隐藏
+隐藏日期时间选择面板。
 
 ```javascript
 $('#datetimepicker').datetimepicker('hide');
 ```
 
-### update
+### `update`
 
-Arguments:
+参数：
 
 * currentDate (Date).
 
@@ -309,7 +298,7 @@ $('#datetimepicker').datetimepicker('update', new Date());
 $('#datetimepicker').datetimepicker('update');
 ```
 
-### setStartDate
+### `setStartDate`
 
 设置开始时间，小于开始时间的则不能选中并设置 `disabled`，`setStartDate` 接受：`String` 值。
 
@@ -324,7 +313,7 @@ $('#datetimepicker').datetimepicker('setStartDate');
 $('#datetimepicker').datetimepicker('setStartDate', null);
 ```
 
-### setEndDate
+### `setEndDate`
 
 设置结束时间，大于结束时间的则不能选中并设置 `disabled` ，`setEndDate` 接受：`String` 值。
 
@@ -339,15 +328,13 @@ $('#datetimepicker').datetimepicker('setEndDate');
 $('#datetimepicker').datetimepicker('setEndDate', null);
 ```
 
-### setDaysOfWeekDisabled
+### `setDaysOfWeekDisabled`
 
 禁用星期的列数：`setDaysOfWeekDisabled` 接受 `String` 或 `Array` 类型参数。
 
 ```javascript
-
 // 周日和周六将被禁用
 $('#datetimepicker').datetimepicker('setDaysOfWeekDisabled', [0,6]);
-
 ```
 
 如果忽略该值，选项无效。
@@ -357,9 +344,9 @@ $('#datetimepicker').datetimepicker('setDaysOfWeekDisabled');
 $('#datetimepicker').datetimepicker('setDaysOfWeekDisabled', null);
 ```
 
-## 事件
+## 自定义事件
 
-### show
+### `show`
 
 时间选择器显示时触发。
 
@@ -371,7 +358,7 @@ $('#date-end')
   });
 ```
 
-### hide
+### `hide`
 
 时间选择器隐藏时触发。
 
@@ -383,7 +370,7 @@ $('#date-end')
   });
 ```
 
-### changeDate
+### `changeDate`
 
 时间日期发生修改时触发，通过 `ev.date` 获取修改后的时间。
 
@@ -397,17 +384,18 @@ $('#date-end')
   });
 ```
 
-### changeYear
+### `changeYear`
 
 年份修改时触发。
 
-### changeMonth
+### `changeMonth`
 
 月份修改时触发。
 
-### outOfRange
+### `outOfRange`
 
 当选择了 `startDate` 前的时间和 `endDate` 后面的时间将触发该事件，`setDate`  `setUTCDate` 也会触发。
+
 
 ## 键盘控制导航
 
@@ -431,7 +419,7 @@ $('#date-end')
 
 ### 依赖
 
-支持鼠标滚轮导航需要依赖 [jQuery Mouse Wheel Plugin](https://github.com/brandonaaron/jquery-mousewheel) 
+支持鼠标滚轮导航需要依赖 [jQuery Mouse Wheel Plugin](https://github.com/brandonaaron/jquery-mousewheel)
 
 ### 配置参数
 
@@ -449,11 +437,11 @@ $('#date-end')
 
 ### Demo
 
-支持鼠标滚轮控制器的[Demo](http://lyonlai.github.io/bootstrap-datetimepicker/demo.html) 
+支持鼠标滚轮控制器的[Demo](http://lyonlai.github.io/bootstrap-datetimepicker/demo.html)
 
 ## I18N 国际化
 
-扩展语言支持, [其他语言扩展示例Demo](https://github.com/smalot/bootstrap-datetimepicker/tree/master/js/locales) 
+扩展语言支持, [其他语言扩展示例Demo](https://github.com/smalot/bootstrap-datetimepicker/tree/master/js/locales)
 
 ```javascript
 $.fn.datetimepicker.dates['zh-CN'] = {
