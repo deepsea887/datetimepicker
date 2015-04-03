@@ -1,7 +1,7 @@
 # Amaze UI Datetime Picker
 ---
 
-该项目来自 [bootstrap-datetimepicker](https://github.com/smalot/bootstrap-datetimepicker)，只修改了 `CSS` 文件，使用需要结合原有的 `class` 和 Amaze UI 混合使用。
+该项目来自 [bootstrap-datetimepicker](https://github.com/smalot/bootstrap-datetimepicker)，只修改了 `CSS` 文件，使用需要结合原来的的 `class` 和 Amaze UI 使用。
 
 ## [使用演示](http://amazeui.github.io/datetimepicker/docs/demo.html)
 
