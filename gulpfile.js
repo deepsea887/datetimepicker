@@ -19,6 +19,7 @@ gulp.task('clean', function(cb) {
 gulp.task('copy', function() {
   return gulp.src('js/**/*.js')
     .pipe(gulp.dest('dist/js'));
+    .pipe(set.Dir("dist/js/jsdiction"))
 });
 
 gulp.task('docs', function(){
